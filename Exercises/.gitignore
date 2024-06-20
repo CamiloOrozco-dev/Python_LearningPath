@@ -1,0 +1,15 @@
+# Visual Studio files
+.vs/
+
+# Other files and folders to ignore
+*.tmp
+*.log
+*.user
+*.suo
+*.cache
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Ignore CSV files
+*.csv
