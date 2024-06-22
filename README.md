@@ -11,6 +11,7 @@ The repository contains the following main components:
 2. **Data Collection Exercises**: In this section, I show my experience in collecting data from various sources using Python. This includes extracting data from CSV files, SQL databases, web APIs and more.
 
 3. **Training a model**: As a final project, I have developed a training using ML techniques. Can respond to a variety of queries and demonstrates my ability to apply ML concepts in a practical project ussing Python.
+3. **Training a model**: As a final project, I have developed a training using ML techniques. Can respond to a variety of queries and demonstrates my ability to apply ML concepts in a practical project ussing Python.
 
 ## 💻 Technologies Used.
 
@@ -29,3 +30,4 @@ To use this repository, simply clone it to your local machine and follow the.
 - **Numpy** : numpy-2.0.0
 - **Faker** : faker-1.16.0
 - **Skimage** : skimage-24-1
+

@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv('Files/titanic.csv')
+df = pd.read_csv("Asserts/Files/titanic.csv")
 
 # Explore the DataFrame's structure and content
 print("Shape (rows, columns):", df.shape)
@@ -23,36 +23,46 @@ print("\nRow at index 147:", df.iloc[147])
 # Filter rows based on a condition (odd PassengerId
 
 print("\nRows with odd PassengerId:")
-print(df[df['PassengerId'] % 2 == 1])
+print(df[df["PassengerId"] % 2 == 1])
 
 # Filter, select columns, and sort by Name for first-class passengers
 print("\nFirst-class passengers sorted by Name (ascending):")
-print(df[df['Pclass'] == 1][['Pclass', 'Name']].sort_values(by='Name'))
+print(df[df["Pclass"] == 1][["Pclass", "Name"]].sort_values(by="Name"))
 
-#Filter passengers who died and survivors.
+# Filter passengers who died and survivors.
 
-#All passengers existed in data 
+# All passengers existed in data
 total_passengers = df.shape[0]
 
 print("\nPercent of passengers who died")
-p_died = df[df['Survived'] == 1].shape[0]
-print(f"{(p_died / total_passengers )* 100:.2f}%" )
+p_died = df[df["Survived"] == 1].shape[0]
+print(f"{(p_died / total_passengers )* 100:.2f}%")
 
 print("\nPercent of passengers who survived")
-p_survived = df[df['Survived'] == 0].shape[0]
-print(f"{(p_survived / total_passengers)*100:.2f}%") 
+p_survived = df[df["Survived"] == 0].shape[0]
+print(f"{(p_survived / total_passengers)*100:.2f}%")
 
 # Get the porcent who survived by each class
 
 print("People who survived by each class")
-print(df.groupby('Pclass')['Survived'].mean()*100) 
+print(df.groupby("Pclass")["Survived"].mean() * 100)
 
-#Delete passenger with unknown age
+# Delete passenger with unknown age
 print("\nDelete passenger with unknown age")
+cleaned = df.dropna(subset=["Age"])
+print(cleaned)
 
 print("\nGet the percent of age by each class")
-print(df.groupby('Pclass')['Age'].mean())
+print(df.groupby("Pclass")["Age"].mean())
 
-#Group females avarage Age porcent by class
+# Group females avarage Age porcent by class
 print("Avarage Age percent of females by each class")
-print(df [df['Sex'] == 'female'].groupby('Pclass')['Age'].mean())
+print(df[df["Sex"] == "female"].groupby("Pclass")["Age"].mean())
+
+
+# Group of minors
+def is_minor(age):
+    return "YES" if age < 18 else "NO"
+
+
+df["Is minor"] = df["Age"].apply(is_minor)
