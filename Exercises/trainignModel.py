@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 baseUrl = "https://www.kaggle.com/datasets/javagarm/fifa-19-complete-player-dataset"
 # Load the data and handle encoding
 try:
-    df = pd.read_csv("/content/kl.csv", index_col=0, encoding="ISO-8859-1")
+    df = pd.read_csv("/assert/files/FIFA.csv", index_col=0, encoding="ISO-8859-1")
 except FileNotFoundError:
     print("Error: File '/content/kl.csv' not found. Please check the file path.")
     exit()
@@ -41,27 +41,26 @@ print(f"Missing values in 'Age': {df['Age'].isnull().any()}")
 print(f"Missing values in 'Potential': {df['Potential'].isnull().any()}")
 
 # Explore the relationship between Age and Potential
-plt.figure(figsize=(10, 6))  # Set plot size for better visualization
-plt.subplot(121)  # Create a subplot for the histogram
+plt.figure(figsize=(10, 6))
+plt.subplot(121)
 plt.hist2d(data=df, x="Age", y="Potential")
 plt.xlabel("Age")
 plt.ylabel("Potential")
 plt.colorbar()
-plt.subplot(122)  # Create a subplot for the scatter plot
+plt.subplot(122)
 plt.scatter(data=df, x="Age", y="Potential")
 plt.xlabel("Age")
 plt.ylabel("Potential")
-plt.tight_layout()  # Adjust spacing between subplots
+plt.tight_layout()
 plt.show()
 
 # Handle missing values (optional)
 if df["Age"].isnull().any():
-    # Impute missing values with the mean of each column (alternative methods exist)
     imputer = SimpleImputer(strategy="mean")
     X_imputed = imputer.fit_transform(X)
     # Use the imputed data for further analysis (if needed)
 else:
-    # No missing values detected, use original data
+
     X_imputed = X
 
 # Split data into training and testing sets
