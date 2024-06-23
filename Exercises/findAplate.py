@@ -17,7 +17,7 @@ contours, _ = cv2.findContours(blur_image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_S
 license_plate_contours = []
 for contour in contours:
     approx = cv2.approxPolyDP(contour, 0.04 * cv2.arcLength(contour, True), True)
-    if len(approx) == 4:  # Check if it's a quadrilateral (license plate shape)
+    if len(approx) == 4:
         license_plate_contours.append(approx)
 
 # Extract and segment characters from the best license plate contour
